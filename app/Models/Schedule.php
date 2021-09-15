@@ -19,6 +19,11 @@ class Schedule extends Model
     {
         return $this->events()->get()
             ->groupBy('day_of_week')
+            ->sortBy(function($rows, $key) {
+                $order = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+                return array_search($key, $order);
+            })
             ->map(function($events, $key) {
                 return $events->sortBy('start_time');
             })->sortBy(function($events, $key) {
