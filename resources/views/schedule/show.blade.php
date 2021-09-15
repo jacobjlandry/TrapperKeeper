@@ -9,7 +9,7 @@
         Schedules
     </div>
     <div class="flex flex-row">
-        @foreach($schedule->events as $dayOfWeek => $events)
+        @foreach($schedule->getEventsByWeekday as $dayOfWeek => $events)
             <div class="border-2 border-yellow-300 rounded m-2 w-96">
                 <div class="text-2xl border-b-2 border-yellow-300 p-4">
                     {{ $dayOfWeek }}

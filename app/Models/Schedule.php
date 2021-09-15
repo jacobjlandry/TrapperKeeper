@@ -15,7 +15,7 @@ class Schedule extends Model
         return $this->hasMany(Event::class);
     }
 
-    public function getEventsAttribute()
+    public function getEventsByWeekday()
     {
         return $this->events()->get()
             ->groupBy('day_of_week')
