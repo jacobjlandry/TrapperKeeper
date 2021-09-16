@@ -18,9 +18,6 @@
                                 <div class="text-gray-500 mb-4">
                                     {{ $event->start_time }}
                                 </div>
-                                <div class="text-lg font-bold @if(date('D') == substr($dayOfWeek, 0, 3) && strtotime($now) >= strtotime($event->start_time) && strtotime($now) < strtotime($event->end_time)) text-yellow-300 @else text-white @endif">
-                                    {{ $event->name }}
-                                </div>
                                 <div class="text-base mb-4 @if(date('D') == substr($dayOfWeek, 0, 3) && strtotime($now) >= strtotime($event->start_time) && strtotime($now) < strtotime($event->end_time)) text-yellow-300 @else text-white @endif">
                                     @if($event->activities->count())
                                         @foreach($event->activities as $activity)
