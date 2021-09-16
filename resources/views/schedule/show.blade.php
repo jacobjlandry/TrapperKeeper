@@ -9,8 +9,11 @@
         @foreach($schedule->getEventsByWeekday() as $dayOfWeek => $events)
             @if(!request()->has('focus') || date('D') == substr($dayOfWeek, 0, 3))
                 <div class="w-96 @if(request()->has('focus')) sm:w-full md:w-2/5 @else border-2 border-gray-400 rounded m-2 @endif">
-                    <div class="text-2xl border-b-2 border-gray-400 p-4 text-green-500">
-                        {{ $dayOfWeek }}
+                    <div class="text-2xl border-b-2 border-gray-400 p-4 text-green-500 flex flex-row justify-between">
+                        <div>{{ $dayOfWeek }}</div>
+                        @if(date('D') == substr($dayOfWeek, 0, 3) && !request()->has('focus'))
+                            <a href="?focus=true"><div class="border border-gray-400 rounded text-gray-400 px-4 py-1 text-sm hover:bg-gray-400 hover:text-black hover:border-black">Focus</div></a>
+                        @endif
                     </div>
                     <div class="w-full">
                         @foreach($events as $event)
