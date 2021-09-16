@@ -5,9 +5,6 @@
 @endsection
 
 @section('body')
-    <div class="text-2xl">
-        Schedules
-    </div>
     <div class="flex flex-row">
         @foreach($schedule->getEventsByWeekday() as $dayOfWeek => $events)
             <div class="border-2 border-yellow-300 rounded m-2 w-96">
