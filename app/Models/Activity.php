@@ -5,13 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Jenssegers\Mongodb\Eloquent\Model;
 
-class Event extends Model
+class Activity extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
-
-    public function activities()
-    {
-        return $this->hasMany(Activity::class);
-    }
 }

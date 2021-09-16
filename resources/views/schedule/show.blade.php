@@ -21,9 +21,18 @@
                                 {{ $event->name }}
                             </div>
                             <div class="text-base mb-4 @if(date('D') == substr($dayOfWeek, 0, 3) && strtotime($now) >= strtotime($event->start_time) && strtotime($now) < strtotime($event->end_time)) text-yellow-300 @else text-white @endif">
-                                @foreach(explode(",", $event->description) as $item)
-                                    {{ $item }}<br />
-                                @endforeach
+                                @if($event->activities->count())
+                                    @foreach($event->activities as $activity)
+                                        <div class="flex flex-row justify-start pl-2">
+                                            <div class="pr-4">{!! $activity->icon !!}</div>
+                                            <div>{{ $activity->name }}</div>
+                                        </div>
+                                    @endforeach
+                                @else
+                                    @foreach(explode(",", $event->description) as $item)
+                                        {{ $item }}<br />
+                                    @endforeach
+                                @endif
                             </div>
                         </div>
                     @endforeach
