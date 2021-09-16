@@ -8,7 +8,7 @@
     <div class="flex flex-row:x">
         @foreach($schedule->getEventsByWeekday() as $dayOfWeek => $events)
             @if(!request()->has('focus') || date('D') == substr($dayOfWeek, 0, 3))
-                <div class="border-2 border-gray-400 rounded m-2 w-96 @if(request()->has('focus')) sm:w-full md:w-2/5 @endif">
+                <div class="w-96 @if(request()->has('focus')) sm:w-full md:w-2/5 @else border-2 border-gray-400 rounded m-2 @endif">
                     <div class="text-2xl border-b-2 border-gray-400 p-4 text-green-500">
                         {{ $dayOfWeek }}
                     </div>
