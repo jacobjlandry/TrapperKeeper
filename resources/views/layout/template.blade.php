@@ -10,7 +10,7 @@
         </div>
     @endif
 
-    <div class="w-full h-full bg-black bg-opacity-80 backdrop-filter backdrop-blur-lg text-gray-300 text-base font-sans p-4">
+    <div class="w-full h-full bg-black bg-opacity-80 backdrop-filter backdrop-blur-lg text-gray-300 text-base font-sans @if(request()->has('focus')) px-4 @else p-4 @endif">
         @yield('body')
     </div>
 </body>
