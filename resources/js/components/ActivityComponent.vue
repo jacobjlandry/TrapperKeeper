@@ -24,9 +24,9 @@
             // if we're looking at the right day
             if(week[this.currentTime.getDay()] == this.day) {
                 // check time
-                if(start <= current && current <= end) {
+                if(start <= current && current < end) {
                     $("#" + this.id).addClass('text-yellow-300');
-                } else if(current > end) {
+                } else if(current >= end) {
                     $("#" + this.id).addClass('text-gray-700');
                 } else {
                     $("#" + this.id).addClass('text-white');
