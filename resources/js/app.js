@@ -49,7 +49,12 @@ const app = new Vue({
                 hours = hours - 12;
                 meridiem = 'PM';
             }
-            const time = hours + ":" + today.getMinutes();
+            // pad minutes with leading 0s
+            let minutes = today.getMinutes();
+            if(minutes < 10) {
+                minutes = '0' + minutes;
+            }
+            const time = hours + ":" + minutes;
             const dateTime = date + ' ' + time + ' ' + meridiem;
             this.timestamp = dateTime;
             this.time = today;

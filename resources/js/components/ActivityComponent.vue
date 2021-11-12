@@ -14,7 +14,7 @@
         },
 
         updated() {
-            const current = this.currentTime.getTime();
+            let current = this.currentTime.getTime();
             const now = new Date();
             const dateString = now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate();
             const start = new Date(dateString + 'T' + this.start).getTime();
@@ -26,9 +26,15 @@
                 // check time
                 if(start <= current && current < end) {
                     $("#" + this.id).addClass('text-yellow-300');
+                    $("#" + this.id).removeClass('text-gray-700');
+                    $("#" + this.id).removeClass('text-white');
                 } else if(current >= end) {
+                    $("#" + this.id).removeClass('text-yellow-300');
                     $("#" + this.id).addClass('text-gray-700');
+                    $("#" + this.id).removeClass('text-white');
                 } else {
+                    $("#" + this.id).removeClass('text-yellow-300');
+                    $("#" + this.id).removeClass('text-gray-700');
                     $("#" + this.id).addClass('text-white');
                 }
             }
