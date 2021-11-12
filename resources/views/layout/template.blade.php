@@ -14,5 +14,6 @@
         @yield('body')
     </div>
 </body>
+<script type="text/javascript" src="/js/app.js"></script>
 @stack('scripts')
 </html>
