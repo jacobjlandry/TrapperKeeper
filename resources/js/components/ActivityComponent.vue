@@ -8,6 +8,27 @@
 </template>
 
 <script>
+    /**
+     * Get two-digit month num
+     * Date.getDate() returns 0-11 (month index)
+     * For the date-time functions to work, we need Jan => 01, Feb => 02, etc.
+     * This will turn the month index into a proper date string
+     * 
+     * @param Date date
+     * 
+     * @returns string
+     */
+    function getTwoDigitMonth(date)
+    {
+        const month = date.getMonth() + 1;
+
+        if(month < 10) {
+            return "0" + month;
+        }
+
+        return month;
+    }
+
     export default {
         mounted() {
             //
@@ -16,7 +37,7 @@
         updated() {
             let current = this.currentTime.getTime();
             const now = new Date();
-            const dateString = now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate();
+            const dateString = now.getFullYear() + '-' + (getTwoDigitMonth(now)) + '-' + now.getDate();
             const start = new Date(dateString + 'T' + this.start).getTime();
             const end = new Date(dateString + 'T' + this.end).getTime();
             const week = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
