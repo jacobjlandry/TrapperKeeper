@@ -18,7 +18,8 @@ RUN apt-get update && apt-get install -y \
     vim \
     libcurl4-openssl-dev \
     pkg-config \
-    libssl-dev
+    libssl-dev  \
+    npm
 
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
@@ -38,5 +39,8 @@ RUN mkdir -p /home/$user/.composer && \
 
 # Set working directory
 WORKDIR /var/www
+
+RUN NODE_OPTIONS=--max-old-space-size=1000; npm install
+RUN npm run prod
 
 USER $user
